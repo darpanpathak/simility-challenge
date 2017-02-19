@@ -1,0 +1,54 @@
+<site-menu></site-menu><br>
+<div class="container">
+
+    <div class="raw">
+        <div class="col-lg-9 col-sm-9" style="margin-bottom: 20px;">
+            <div class="form-group">
+                <div class="input-group">
+                    <div class="input-group-addon">
+                        <i class="glyphicon glyphicon-search"></i>
+                    </div>
+                    <input type="text" class="form-control" placeholder="Search (by name)" [(ngModel)]="movie_title" />
+                </div>
+                <!-- /.input group -->
+            </div>
+        </div>
+        <!--<div class="col-lg-3 col-sm-3">
+            <div class="btn-group">
+                <a href="#" class="btn btn-info">Filter By:</a>
+                <a href="#" class="btn btn-info dropdown-toggle" data-toggle="dropdown"><span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                    <li><a href="#">Action</a></li>
+                    <li><a href="#">Another action</a></li>
+                    <li><a href="#">Something else here</a></li>
+                    <li class="divider"></li>
+                    <li><a href="#">Separated link</a></li>
+                </ul>
+            </div>
+        </div>-->
+    </div>
+
+    <div class="row">
+        <div class="item  col-xs-12 col-lg-4" *ngFor="let movie of movielist | customMovieFilter:movie_title">
+            <div class="thumbnail" style="min-height: 600px;">
+                <img class="group list-group-image" src="../images/mv.png" alt="" />
+                <div class="caption">
+
+                    <h2><a href="{{movie.movie_imdb_link}}" target="_blank"> {{movie.movie_title}}({{movie.title_year}}) </a></h2>
+
+                    <p>Country : {{movie.country}}</p>
+                    <p>Language : {{movie.language}}</p>
+                    <p>Director : {{movie.director_name}}</p>
+                    <p>Actors : {{movie.actor_1_name}} , {{movie.actor_2_name}}</p>
+
+                    <hr>Genres : {{movie.genres}}
+
+                </div>
+            </div>
+        </div>
+
+        <!-- /.row -->
+    </div>
+
+     <pagination-controls (pageChange)="p = $event"></pagination-controls>
+</div>
